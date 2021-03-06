@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'to_product_images.dart';
 
 //main runs the app
 void main() => runApp(MaterialApp(home: MyApp(), debugShowCheckedModeBanner: false,));
@@ -36,7 +36,11 @@ class _MyAppState extends State<MyApp> {
 
               title: Text("PANTS"),
               trailing: Icon(Icons.add),
-              onTap: (){},
+              onTap: (){
+
+                Navigator.push(context, MaterialPageRoute(builder: (context) => ProductImages()));
+
+              },
             ),
 
             ListTile(
@@ -70,6 +74,7 @@ class _MyAppState extends State<MyApp> {
 
         backgroundColor: Colors.black,
 
+
         actions: [
 
           Expanded(
@@ -85,8 +90,8 @@ class _MyAppState extends State<MyApp> {
 
             flex: 1,
             child: Container(
-              padding: EdgeInsets.fromLTRB(20, 5, 0, 0),
-              child: Text("REMNANT", style: TextStyle(fontWeight: FontWeight.w900, fontSize: 35),),
+              padding: EdgeInsets.fromLTRB(30, 6, 0, 0),
+              child: Text("REMNANT", style: TextStyle(fontWeight: FontWeight.w900, fontSize: 25),),
             ),
           ),
 
@@ -151,12 +156,23 @@ class _MyAppState extends State<MyApp> {
                         border: Border.all(color: Colors.white, width: 5,),
                         borderRadius: BorderRadius.circular(12)
                     ),
-                    child: Column(
-                      children: <Widget>[
-                        Text("DELIVERY FREE",style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white)),
-                        Icon(Icons.local_shipping, color: Colors.white,)
-                      ],
+
+                    child: GestureDetector(
+                      onTap: (){
+                        final snackBar = SnackBar(content: Text("Delivery clicked"),);
+
+                        //ScaffoldMessenger.showSnackBar()
+
+                        ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                      },
+                      child:Column(
+                        children: <Widget>[
+                          Text("DELIVERY FREE",style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white)),
+                          Icon(Icons.local_shipping, color: Colors.white,)
+                        ],
+                      ),
                     ),
+
                   ),
 
                   Padding(padding: EdgeInsets.all(40),),
