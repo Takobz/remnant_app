@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'to_product_images.dart';
+import 'product_images.dart';
+import 'package:http/http.dart' as http;
 
 //main runs the app
-void main() => runApp(MaterialApp(home: MyApp(), debugShowCheckedModeBanner: false,));
+void main() => runApp(MaterialApp(home: MyApp(), debugShowCheckedModeBanner: false, title: "REMNANT",));
 
 //stateful widgets can change state
 //the UI can change
@@ -37,9 +38,7 @@ class _MyAppState extends State<MyApp> {
               title: Text("PANTS"),
               trailing: Icon(Icons.add),
               onTap: (){
-
-                Navigator.push(context, MaterialPageRoute(builder: (context) => ProductImages()));
-
+                Navigator.push(context, MaterialPageRoute(builder: (context) => ProductImages(NameOfTab : "PANTS")));
               },
             ),
 
@@ -47,21 +46,27 @@ class _MyAppState extends State<MyApp> {
 
               title: Text("TEES"),
               trailing: Icon(Icons.add),
-              onTap: (){},
+              onTap: (){
+                Navigator.push(context, MaterialPageRoute(builder: (context) => ProductImages(NameOfTab : "TEES")));
+              },
             ),
 
             ListTile(
 
               title: Text("BEANIES"),
               trailing: Icon(Icons.add),
-              onTap: (){},
+              onTap: (){
+                Navigator.push(context, MaterialPageRoute(builder: (context) => ProductImages(NameOfTab : "BEANIES")));
+              },
             ),
 
             ListTile(
 
               title: Text("HOODIES"),
               trailing: Icon(Icons.add),
-              onTap: (){},
+              onTap: (){
+                Navigator.push(context, MaterialPageRoute(builder: (context) => ProductImages(NameOfTab : "HOODIES")));
+              },
             ),
 
           ],
@@ -74,23 +79,29 @@ class _MyAppState extends State<MyApp> {
 
         backgroundColor: Colors.black,
 
+        title: Text("REMNANT", style: TextStyle(fontWeight: FontWeight.w900, fontSize: 25),),
+
+        centerTitle: true,
+
 
         actions: [
 
           Expanded(
 
-            flex: 1,
-            child: Padding(
-              padding: EdgeInsets.all(8),
-              child: Icon(Icons.search),
-            ),
+            flex: 2,
+            child: Icon(Icons.search),
+            // child: Padding(
+            //   //padding: EdgeInsets.all(8),
+            //   child: Icon(Icons.search),
+            // ),
           ),
 
           Expanded(
 
-            flex: 1,
+            flex: 2,
+
             child: Container(
-              padding: EdgeInsets.fromLTRB(30, 6, 0, 0),
+              padding: EdgeInsets.fromLTRB(25, 10, 0, 0),
               child: Text("REMNANT", style: TextStyle(fontWeight: FontWeight.w900, fontSize: 25),),
             ),
           ),
@@ -98,20 +109,22 @@ class _MyAppState extends State<MyApp> {
           //TODO fix the account icon
           Expanded(
 
-            flex: 1,
-            child: Padding(
-                padding: EdgeInsets.fromLTRB(80,8,0,0),
-                child: Icon(Icons.add_shopping_cart)
-            ),
+            flex: 2,
+            child: Icon(Icons.add_shopping_cart),
+            // child: Padding(
+            //     //padding: EdgeInsets.fromLTRB(80,8,0,0),
+            //     child: Icon(Icons.add_shopping_cart)
+            // ),
           ),
 
           Expanded(
 
             flex: 1,
-            child: Padding(
-              padding: EdgeInsets.all(8),
-              child: Icon(Icons.account_circle),
-            ),
+            child: Icon(Icons.account_circle),
+            // child: Padding(
+            //   //padding: EdgeInsets.all(8),
+            //   child: Icon(Icons.account_circle),
+            // ),
           )
         ],
       ),
